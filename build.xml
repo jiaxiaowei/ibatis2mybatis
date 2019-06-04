@@ -19,7 +19,7 @@
 		<!-- delete possible results from previous run -->
 		<delete>
 		    <fileset dir="destination" includes="*.xml"/>
-		  </delete>
+		</delete>
 		<!-- xslt convert sqlMaps 2 to mybatis 3 -->
 		<xslt basedir="source" style="migrate.xslt" includes="*.xml" destdir="destination" extension=".xml"/>
 		<!-- replace #id:NUMERIC# to #id,jdbcType=NUMERIC# etc. -->
@@ -51,5 +51,9 @@
 			<dtd publicId="-//mybatis.org//DTD Mapper 3.0//EN" location="mybatis-3-mapper.dtd" />
 		</xmlvalidate>
 
+        <exec executable="bash" dir="./">
+    		<arg value="-c"/><!-- 如果你的命令是字符串(不是*.bat或者*.exe),那么你就要加上-c了(windows上是/c) -->
+    		<arg value="python3 rename.py"/>
+		</exec>
 	</target>
 </project>

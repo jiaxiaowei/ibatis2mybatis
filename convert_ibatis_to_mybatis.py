@@ -1,9 +1,13 @@
+#把ibatis配置xml文件转换成mybatis文件
 import os
+
+#项目根路径，会遍历处理下面的所有字目录文件
+rootPath = '/Users/jiaxiaowei/work/svn_kuotu/jii_trunk'
 
 for file in os.listdir('./source'):
     os.remove(os.path.join(os.path.join(os.getcwd(),'source'),file))
 
-rootPath = '/Users/jiaxiaowei/work/svn_kuotu/jii_trunk/istore'
+errorFiles = []
 #递归遍历目录
 for root, dirs, files in os.walk(rootPath):
     for file in files:
@@ -36,3 +40,7 @@ for root, dirs, files in os.walk(rootPath):
                 os.remove(newPath)
             except:
                 print('ant error: {0}'.format(sourcePath))
+                errorFiles.append(os.path.join(root,file))
+print("error files: {0}".format(len(errorFiles)))
+for file in errorFiles:
+    print(file)

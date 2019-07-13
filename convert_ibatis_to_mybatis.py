@@ -1,8 +1,11 @@
 #把ibatis配置xml文件转换成mybatis文件
 import os
 
-#项目根路径，会遍历处理下面的所有字目录文件
-rootPath = '/Users/jiaxiaowei/work/svn_kuotu/jii_trunk'
+#要把ibatis的xml文件里的http://www.ibatis.com/dtd/sql-map-2.dtd改成http://ibatis.apache.org/dtd/sql-map-2.dtd
+#否则会因为www.ibatis.com网站无法访问导致转换报错
+
+#项目根路径，会遍历处理下面的所有子目录文件
+rootPath = '/Users/jiaxiaowei/work/SVN_xian/MDS/java_src/trunk/java/'
 
 for file in os.listdir('./source'):
     os.remove(os.path.join(os.path.join(os.getcwd(),'source'),file))
@@ -18,6 +21,7 @@ for root, dirs, files in os.walk(rootPath):
                          or file.endswith('mssql.ibatis.xml'))):
             print(os.path.join(root,file))
         if(file.endswith('mysql.ibatis.xml')):
+            print(os.path.join(root, file))
             currentPath = os.path.join(root,file)
             sourcePath = os.path.join(os.path.join(os.getcwd(),'source'),file)
             open(sourcePath, "wb").write(open(currentPath, "rb").read())
@@ -27,7 +31,7 @@ for root, dirs, files in os.walk(rootPath):
 
                 # 把ibatis转mybatis后的文件自动重命名
                 newName = file[0].capitalize() + file[1:len(file)] # capitalize()会把首字母大写，其他字母会全部变为小写
-                newName = newName.replace('.mysql.ibatis.xml', 'Mapper.mysql.xml')
+                newName = newName.replace('.mysql.ibatis.xml', 'Mapper.xml')
 
                 newPath = os.path.join(os.path.join(os.getcwd(), 'destination'), newName)
                 oldPath = os.path.join(os.path.join(os.getcwd(), 'destination'), file)
@@ -41,6 +45,7 @@ for root, dirs, files in os.walk(rootPath):
             except:
                 print('ant error: {0}'.format(sourcePath))
                 errorFiles.append(os.path.join(root,file))
+
 print("error files: {0}".format(len(errorFiles)))
 for file in errorFiles:
     print(file)

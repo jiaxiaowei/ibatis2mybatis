@@ -4,8 +4,8 @@ import os
 import fnmatch
 
 #项目根路径，会遍历处理下面的所有字目录文件
-rootPaths = ['/Users/jiaxiaowei/work/svn_kuotu/jii_trunk',
-            '/Users/jiaxiaowei/work/SVN_xian/MDS/java_src/trunk']
+rootPaths = ['/Users/jiaxiaowei/work/svn_kuotu/kuotu_trunk/',
+            '/Users/jiaxiaowei/work/SVN_xian/MDS/java_src/trunk/java/']
 
 # 文件内容全局替换
 # src 表示要被替换的内容

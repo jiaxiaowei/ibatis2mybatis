@@ -15,3 +15,8 @@ Greetings from Frankfurt/Germany
 
 Peter Köhler
 
+在本地安装好python环境
+1.转换mapper文件：
+修改conver_ibatis_to_mybatis.py里的文件路径，然后执行命令:python conver_ibatis_to_mybatis.py
+2.更新相关的java文件：
+修改conver_content.py里的文件路径，然后执行命令:python conver_content.py

@@ -1,3 +1,4 @@
+#coding=utf-8
 #把ibatis配置xml文件转换成mybatis文件
 import os
 
@@ -5,7 +6,7 @@ import os
 #否则会因为www.ibatis.com网站无法访问导致转换报错
 
 #项目根路径，会遍历处理下面的所有子目录文件
-rootPath = '/Users/jiaxiaowei/work/SVN_xian/MDS/java_src/trunk/java/'
+rootPath = '/Users/jiaxiaowei/work/svn_kuotu/jii_trunk/hras/hras-core/src/main/java'
 
 for file in os.listdir('./source'):
     os.remove(os.path.join(os.path.join(os.getcwd(),'source'),file))
@@ -14,11 +15,9 @@ errorFiles = []
 #递归遍历目录
 for root, dirs, files in os.walk(rootPath):
     for file in files:
+    	print(os.path.join(root,file))
         #打印命名不正确的xml文件
-        if(file.endswith('.ibatis.xml')
-                and not (file.endswith('mysql.ibatis.xml')
-                         or file.endswith('oracle.ibatis.xml')
-                         or file.endswith('mssql.ibatis.xml'))):
+        if(file.endswith('.ibatis.xml') and not (file.endswith('mysql.ibatis.xml') or file.endswith('oracle.ibatis.xml') or file.endswith('mssql.ibatis.xml'))):
             print(os.path.join(root,file))
         if(file.endswith('mysql.ibatis.xml')):
             print(os.path.join(root, file))
